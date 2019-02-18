@@ -1,0 +1,50 @@
+{
+  "name": "mock-amplify-auth",
+  "version": "1.0.0",
+  "description": "Mock AWS Amplify JavaScript SDK for offline scenarios",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "npm run test -- --cov --coverage-report=html",
+    "format": "prettier --write \"**/*.js\"",
+    "test": "tap \"test/**/*.test.js\" --branches=100 --statements=100 --functions=100 --lines=100"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fourTheorem/mock-amplify-auth.git"
+  },
+  "keywords": [
+    "aws",
+    "amplify",
+    "auth",
+    "login",
+    "offline",
+    "dummy",
+    "mock",
+    "test"
+  ],
+  "author": "Eoin Shanaghy <eoin.shanaghy@fourtheorem.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fourTheorem/mock-amplify-auth/issues"
+  },
+  "homepage": "https://github.com/fourTheorem/mock-amplify-auth#readme",
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.1.3",
+    "import-fresh": "^3.0.0",
+    "prettier": "1.14.3",
+    "pretty-quick": "^1.8.0",
+    "tap": "^12.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "**/test/**/*.js"
+    ]
+  }
+}
