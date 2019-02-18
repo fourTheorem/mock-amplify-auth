@@ -20,7 +20,7 @@
     "offline",
     "dummy",
     "mock",
-    "test"
+    "serverless"
   ],
   "author": "Eoin Shanaghy <eoin.shanaghy@fourtheorem.com>",
   "license": "MIT",

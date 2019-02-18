@@ -48,7 +48,6 @@ test("logged in after sign in", async t => {
 });
 
 test("logged in persists on new import", async t => {
-  debugger;
   const freshAuth = importFresh("..");
   await freshAuth.currentSession();
 });
