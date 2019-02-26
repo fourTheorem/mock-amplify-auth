@@ -20,12 +20,12 @@ Auth = {
   resendSignUp
 };
 
-function signUp({ email }) {
+function signUp(email) {
   updateState({ email, loggedIn: false });
   return timerPromise(1200);
 }
 
-function signIn({ email }) {
+function signIn(email) {
   updateState({ email, session: createSession({ email }), loggedIn: true });
   return timerPromise(700);
 }
