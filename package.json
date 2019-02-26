@@ -46,5 +46,9 @@
     "exclude": [
       "**/test/**/*.js"
     ]
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "jsonwebtoken": "^8.5.0"
   }
 }
