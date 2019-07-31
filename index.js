@@ -2,6 +2,7 @@ const cryptoJs = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
 const STORAGE_KEY = "mock-amplify-auth.state";
+const USER_ID_PREFIX = "mock-auth-";
 
 let authState;
 
@@ -17,7 +18,8 @@ Auth = {
   currentSession,
   confirmSignUp,
   signOut,
-  resendSignUp
+  resendSignUp,
+  extractEmail
 };
 
 function signUp(email) {
@@ -61,9 +63,18 @@ function timerPromise(ms, success = true, arg) {
   );
 }
 
+function extractEmail(userId) {
+  return Buffer.from(
+    userId.substring(USER_ID_PREFIX.length),
+    "base64"
+  ).toString();
+}
+
 function createSession({ email }) {
   const timeS = Math.floor(Date.now() / 1000);
-  const cognitoUsername = `mock-auth-${cryptoJs.MD5(email)}`;
+  const cognitoUsername = `${USER_ID_PREFIX}${Buffer.from(email).toString(
+    "base64"
+  )}`;
   const idTokenPayload = {
     sub: cognitoUsername,
     token_use: "id",

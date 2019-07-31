@@ -40,7 +40,16 @@ test("resend signup succeeds", async t => {
 });
 
 test("sign in succeeds", async t => {
-  await Auth.signIn({ email });
+  await Auth.signIn(email);
+});
+
+test("email address can be extracted from user ID", async t => {
+  await Auth.signIn(email);
+  debugger;
+  const session = await Auth.currentSession();
+  const { sub } = session.idToken.payload;
+  const extractedEmail = Auth.extractEmail(sub);
+  t.equal(extractedEmail, email);
 });
 
 test("logged in after sign in", async t => {
