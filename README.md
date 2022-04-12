@@ -22,9 +22,11 @@ Currently, all operations succeed regardless of inputs, so it's pretty much all 
 - `confirmSignUp`
 - `signOut`
 - `resendSignUp`
+- `forgotPassword`
+- `forgotPasswordSubmit`
 
 ## LICENSE
 
 MIT. See [LICENSE](LICENSE)
 
-Copyright fourTheorem Ltd. 2019
+Copyright fourTheorem Ltd. 2019-2022
