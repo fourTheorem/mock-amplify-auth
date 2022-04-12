@@ -19,7 +19,9 @@ Auth = {
   confirmSignUp,
   signOut,
   resendSignUp,
-  extractEmail
+  extractEmail,
+  forgotPassword,
+  forgotPasswordSubmit
 };
 
 function signUp(email) {
@@ -68,6 +70,15 @@ function extractEmail(userId) {
     userId.substring(USER_ID_PREFIX.length),
     "base64"
   ).toString();
+}
+
+function forgotPassword(email) {
+  updateState({ email, loggedIn: false });
+  return timerPromise(400);
+}
+
+function forgotPasswordSubmit() {
+  return timerPromise(400);
 }
 
 function createSession({ email }) {
