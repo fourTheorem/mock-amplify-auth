@@ -45,7 +45,6 @@ test("sign in succeeds", async t => {
 
 test("email address can be extracted from user ID", async t => {
   await Auth.signIn(email);
-  debugger;
   const session = await Auth.currentSession();
   const { sub } = session.idToken.payload;
   const extractedEmail = Auth.extractEmail(sub);
@@ -68,6 +67,22 @@ test("signout succeeds", async t => {
 test("logged out after signout", t => {
   t.rejects(Auth.currentSession());
   t.end();
+});
+
+test("reset password updates the email state", async t => {
+  await Auth.forgotPassword(email);
+  try {
+    await Auth.currentSession();
+    t.fail(
+      "currentSession should have thrown an error when there is no active session"
+    );
+  } catch (err) {
+    // Expected
+  }
+});
+
+test("forgotPasswordSubmit", async t => {
+  await Auth.forgotPasswordSubmit();
 });
 
 test("gracefully degrades when local storage item is bad", t => {
