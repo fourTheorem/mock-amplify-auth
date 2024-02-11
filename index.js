@@ -21,7 +21,8 @@ Auth = {
   resendSignUp,
   extractEmail,
   forgotPassword,
-  forgotPasswordSubmit
+  forgotPasswordSubmit,
+  confirmResetPassword
 };
 
 function signUp(email) {
@@ -45,6 +46,11 @@ function confirmSignUp() {
 function signOut() {
   updateState({ email: null, loggedIn: false, session: null });
   return timerPromise(100);
+}
+
+function confirmResetPassword(email, confirmationCode, password) {
+  updateState({ email, loggedIn: false, session: null });
+  return timerPromise(150);
 }
 
 function resendSignUp() {
